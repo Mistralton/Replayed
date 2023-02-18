@@ -1,4 +1,4 @@
-<div class="flex flex-col items-center">
+<div class="flex flex-col justify-center items-center flex-1">
   <h1 class="text-8xl text-white tracking-tight font-semibold drop-shadow-md text-center mb-4">
     Replayed
   </h1>
