@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { game } from "../../stores/stores";
+
+  let setGame: string;
   let popout: HTMLDivElement;
   function hidePopper() {
     popout.classList.toggle('hidden')
@@ -25,9 +28,18 @@
         <p class="text-white text-center text-2xl font-semibold tracking-tigher mb-0">Choose Your Game</p>
       </div>
       <div class="grid grid-cols-3">
-        <img on:click={hidePopper} class="p-4 hover:scale-110 hover:cursor-pointer z-10 ease-out duration-500" src="Valorant.png" />
-        <img on:click={hidePopper} class="p-4 hover:scale-110 hover:cursor-pointer z-10 ease-out duration-500" src="League.png" />
-        <img on:click={hidePopper} class="p-4 hover:scale-110 hover:cursor-pointer z-10 ease-out duration-500" src="Overwatch 2.png" />
+        <img on:click={() => {
+          hidePopper()
+          setGame = "Valorant"
+        }} class="p-4 hover:scale-110 hover:cursor-pointer z-10 ease-out duration-500" src="Valorant.png" />
+        <img on:click={() => {
+          hidePopper()
+          setGame = "League of Legends"
+        }} class="p-4 hover:scale-110 hover:cursor-pointer z-10 ease-out duration-500" src="League.png" />
+        <img on:click={() => {
+          hidePopper()
+          setGame = "Overwatch 2"
+        }} class="p-4 hover:scale-110 hover:cursor-pointer z-10 ease-out duration-500" src="Overwatch 2.png" />
       </div>
       <div
         bind:this={popout}
@@ -38,8 +50,12 @@
         <div class="flex flex-col w-full h-full items-center justify-center">
           <p class="text-white text-lg">X</p>
           <div class="flex w-full items-center justify-center m-auto opacity-100 text-white gap-16">
-            <button class="rounded-lg bg-stone-500 min-w-[100px] p-2 hover:bg-stone-400 transition-colors duration-500">Traditional</button>
-            <button class="rounded-lg bg-stone-500 min-w-[100px] p-2 hover:bg-stone-400 transition-colors duration-500">Duel</button>
+            <button class="rounded-lg bg-stone-500 min-w-[100px] p-2 hover:bg-stone-400 transition-colors duration-500">
+              <a href="/replay" on:click={() => game.set(setGame)}>Traditional</a>
+            </button>
+            <button class="rounded-lg bg-stone-500 min-w-[100px] p-2 hover:bg-stone-400 transition-colors duration-500">
+              <a href="/duel">Duel</a>
+            </button>
           </div>
         </div>
       </div>
