@@ -5,9 +5,14 @@
 </script>
 
 <nav class="flex-initial w-full flex justify-between bg-stone-600 h-10">
-	<p class="p-2 ml-4">Replayed</p>
-	<div class="p-2 mr-4 relative">
+	<div class="flex gap-16 p-2 ml-4">
+    <p>Replayed</p>
+    <a href="/about">About</a>
+    <a href="/about">Upload a Clip</a>
+  </div>
+	<div class="flex gap-16 p-2 mr-4 relative">
 		{#if $signedStatus}
+      <a href="/about">Profile</a>
       <button on:click={async () => supabase.auth.signOut()}>Log Out</button>
 		{:else}
       <button
