@@ -3,7 +3,8 @@
 	import { game } from '../../../stores/stores';
 	import { onMount } from 'svelte';
 	import { supabase } from '../../../lib/supabase';
-	import RankGrid from '$lib/components/RankGrid.svelte';
+	import ranks from '../../../lib/components/ranks.json';
+	import Chart from 'chart.js/auto';
 
 	export let data: PageData;
 
@@ -16,7 +17,30 @@
 	onMount(async () => {
 		let { data: replays, error } = await supabase.from('replays').select();
 		replay = replays;
+
+		const ctx: any = document.getElementById('rankStat');
+		const rankNames = ranks.map(rank => rank.alt);
+
+		new Chart(ctx, {
+		type: 'bar',
+		data: {
+			labels: rankNames,
+			datasets: [{
+			label: '# of Votes',
+			data: [12, 19, 3, 5, 2, 3, 1, 1, 1],
+			borderWidth: 1
+			}]
+		},
+		options: {
+			scales: {
+			y: {
+				beginAtZero: true
+			}
+			}
+		}
+		});
 	});
+
 </script>
 
 <div class="flex flex-col">
@@ -44,146 +68,35 @@
 				<p class="text-white font-bold">{replay[0].rank}</p>
 			</div>
 		</div>
+		<div>
+			<canvas id="rankStat"></canvas>
+		</div>
 	{/if}
 	{#if data.title === 'valorant'}valorant{/if}
 	{#if data.title === 'overwatch'}overwatch 2{/if}
 	{#if data.title === 'LEAGUE'}
 		<div class="flex justify-evenly py-5">
-			<RankGrid />
-			<!-- <div class="flex flex-col">
-				<img
-					src="loliron.webp"
-					alt="iron"
-					class="h-20 mx-auto"
-					on:click={(e) => {
-						if (e && e.target) {
-							guess = true;
-							// guessRank = e.target.alt;
-						}
-					}}
-				/>
-				<h2 class="text-white text-center">Iron</h2>
-			</div>
-
-			<div>
-				<img
-					src="lolbronze.webp"
-					alt="Bronze"
-					class="h-20 mx-auto"
-					on:click={(e) => {
-						if (e && e.target) {
-							guess = true;
-							// guessRank = e.target.alt;
-						}
-					}}
-				/>
-				<h2 class="text-white text-center">Bronze</h2>
-			</div>
-
-			<div>
-				<img
-					src="lolsilver.webp"
-					alt="Silver"
-					class="h-20 mx-auto"
-					on:click={(e) => {
-						if (e && e.target) {
-							guess = true;
-							// guessRank = e.target.alt;
-						}
-					}}
-				/>
-				<h2 class="text-white text-center">Silver</h2>
-			</div>
-
-			<div>
-				<img
-					src="lolgold.webp"
-					alt="Gold"
-					class="h-20 mx-auto"
-					on:click={(e) => {
-						if (e && e.target) {
-							guess = true;
-							// guessRank = e.target.alt;
-						}
-					}}
-				/>
-				<h2 class="text-white text-center">Gold</h2>
-			</div>
-
-			<div>
-				<img
-					src="lolplat.webp"
-					alt="Platinum"
-					class="h-20 mx-auto"
-					on:click={(e) => {
-						if (e && e.target) {
-							guess = true;
-							// guessRank = e.target.alt;
-						}
-					}}
-				/>
-				<h2 class="text-white text-center">Plat</h2>
-			</div>
-
-			<div>
-				<img
-					src="loldia.webp"
-					alt="Diamond"
-					class="h-20 mx-auto"
-					on:click={(e) => {
-						if (e && e.target) {
-							guess = true;
-							// guessRank = e.target.alt;
-						}
-					}}
-				/>
-				<h2 class="text-white text-center">Diamond</h2>
-			</div>
-
-			<div>
-				<img
-					src="lolmas.webp"
-					alt="Master"
-					class="h-20 mx-auto"
-					on:click={(e) => {
-						if (e && e.target) {
-							guess = true;
-							// guessRank = e.target.alt;
-						}
-					}}
-				/>
-				<h2 class="text-white text-center">Master</h2>
-			</div>
-
-			<div>
-				<img
-					src="lolgm.webp"
-					alt="Grandmaster"
-					class="h-20 mx-auto"
-					on:click={(e) => {
-						if (e && e.target) {
-							guess = true;
-							// guessRank = e.target.alt;
-						}
-					}}
-				/>
-				<h2 class="text-white text-center">Grandmaster</h2>
-			</div>
-
-			<div>
-				<img
-					src="lolchal.webp"
-					alt="Challenger"
-					class="h-20 mx-auto"
-					on:click={(e) => {
-						if (e && e.target) {
-							guess = true;
-							// guessRank = e.target.alt;
-						}
-					}}
-				/>
-				<h2 class="text-white text-center">Challenger</h2>
-			</div> -->
+			
+			
+		<div class="flex">
+			{#each ranks as rank}
+			<img
+			class="m-4 h-20 w-20 hover:cursor-pointer"
+			src={rank.import}
+			alt={rank.alt}
+			title={rank.import}
+			width={50}
+			height={50}
+			on:click={(e) => {
+				if (e && e.target) {
+					guess = true;
+					guessRank = e.target.alt;
+				}
+			}}
+			/>
+			{/each}       
+		
+		</div>
 		</div>
 	{/if}
 </div>

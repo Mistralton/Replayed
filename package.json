@@ -27,6 +27,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@supabase/supabase-js": "^2.8.0"
+		"@supabase/supabase-js": "^2.8.0",
+		"chart.js": "^4.2.1"
 	}
 }
