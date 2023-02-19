@@ -32,10 +32,22 @@
 			class="mx-auto"
 		/>
 	{/if}
-	{#if $game === 'Valorant' && guess === false}valorant{/if}
-	{#if $game === 'Overwatch 2' && guess === false}overwatch 2{/if}
-	{#if $game === 'League of Legends' && guess === false}
-		<div class="flex justify-evenly">
+	{#if guess === true}
+		<div class="flex justify-evenly p-5">
+			<div>
+				<h2 class="text-white">Your Guess</h2>
+				<p class="text-white font-bold">{guessRank}</p>
+			</div>
+			<div>
+				<h2 class="text-white">Actual Rank</h2>
+				<p class="text-white font-bold">{replay[0].rank}</p>
+			</div>
+		</div>
+	{/if}
+	{#if $game === 'Valorant'}valorant{/if}
+	{#if $game === 'Overwatch 2'}overwatch 2{/if}
+	{#if $game === 'League of Legends'}
+		<div class="flex justify-evenly py-5">
 			<div class="flex flex-col">
 				<img
 					src="loliron.webp"
@@ -169,18 +181,6 @@
 					}}
 				/>
 				<h2 class="text-white text-center">Challenger</h2>
-			</div>
-		</div>
-	{/if}
-	{#if guess === true}
-		<div class="flex justify-evenly">
-			<div>
-				<h2 class="text-white">Your Guess</h2>
-				<p class="text-white">{guessRank}</p>
-			</div>
-			<div>
-				<h2 class="text-white">Actual Rank</h2>
-				<p class="text-white">{replay[0].rank}</p>
 			</div>
 		</div>
 	{/if}
