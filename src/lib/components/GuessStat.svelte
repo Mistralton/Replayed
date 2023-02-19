@@ -68,6 +68,9 @@
     );
   </script>
   
-  <div class="">
-    <Bar {data} options={{ responsive: true }} class=""/>
+  <div class="w-1/2 mx-auto">
+    <Bar {data} 
+    width={50}
+    height={500}
+    options={{ maintainAspectRatio: false }}/>
   </div>
