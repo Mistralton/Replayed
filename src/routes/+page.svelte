@@ -13,13 +13,23 @@ import { supabase } from "$lib/supabase";
 </script>
 
 <div class="flex flex-col justify-center items-center flex-1 mt-[20vh]">
-  <h1 class="text-8xl text-white tracking-tight font-semibold drop-shadow-md text-center mb-4">
-    Replayed
-  </h1>
-  <p class="text-2xl text-white font-thin text-center mb-8">Rise to the top, one replay at a time.</p>
-  <button class="p-2 bg-stone-600 rounded-lg">
-    <a href="/choose">Get Started</a>
-  </button>
+  <div class="flex justify-center items-center gap-16">
+    <div>
+      <h1 class="text-8xl text-white tracking-tight font-semibold drop-shadow-md text-center mb-4">
+        Replayed
+      </h1>
+      <p class="text-2xl text-white font-thin text-center mb-8">Rise to the top, one replay at a time.</p>
+      <div class="flex gap-16 justify-center w-full">
+        <button class="p-2 bg-stone-600 rounded-lg">
+          <a href="/choose">Get Started</a>
+        </button>
+        <button class="p-2 bg-stone-600 rounded-lg">
+          <a href="/choose">Upload a Clip</a>
+        </button>
+      </div>
+    </div>
+    <video width="500" autoplay controls muted src="test1.mp4" />
+  </div>
   <LandingCard order={true} title={"Choose Your Game"} text={"Watch, guess, and comment on replays from games like League of Legends, Valorant, and Overwatch."}/>
   <LandingCard order={false} title={"Choose Your Game"} text={"Watch, guess, and comment on replays from games like League of Legends, Valorant, and Overwatch."}/>
   <LandingCard order={true} title={"Choose Your Game"} text={"Watch, guess, and comment on replays from games like League of Legends, Valorant, and Overwatch."}/>
