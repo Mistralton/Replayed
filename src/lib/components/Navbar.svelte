@@ -6,7 +6,7 @@
 
 <nav class="flex-initial w-full flex justify-between bg-stone-600 h-10">
 	<div class="flex gap-16 p-2 ml-4">
-    <p>Replayed</p>
+    <a href="/">Replayed</a>
     <a href="/about">About</a>
     <a href="/about">Upload a Clip</a>
   </div>
