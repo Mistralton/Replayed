@@ -3,9 +3,15 @@
 	export let position = 'none';
 	export let comments: Array<{ date: string; text: string }> = [];
 	export let id: number;
+  let user: { name: any; avatar?: any; };
 	let textareaValue = '';
 	async function handleSubmit(event: Event, oldComments: { date: string; text: string }[]) {
 		event.preventDefault();
+    let currUser = await supabase.auth.getUser()
+    user = {
+      name: currUser.data.user?.user_metadata.full_name,
+      avatar: currUser.data.user?.user_metadata.avatar_url
+    }
 		const newComment = { date: new Date(Date.now()).toLocaleString(), text: textareaValue };
 		const subscription = supabase
 			.channel('any')
@@ -48,7 +54,7 @@
 		{#each comments as comment}
 			<div class="flex gap-4 text-white">
 				<div class="w-40">
-					<p>Username</p>
+					<p>{user.name ? user.name : "Anonymous"}</p>
 					<p>{comment.date}</p>
 				</div>
 				<div class="w-96">
