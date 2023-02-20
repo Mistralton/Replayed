@@ -1,7 +1,13 @@
-<script lang="ts">
+  <script lang="ts">
+	  import { onMount } from 'svelte';
     import ranks from "./ranks.json"
+    import {newGuesses, patchGuesses} from "./UpdatedGuesses"
     export let guess
     export let guessRank
+    export let replay: any
+    const id = replay.id;
+    const oldGuesses = replay.guesses;
+
   </script>
   
   <div class="flex justify-evenly py-5">
@@ -14,10 +20,13 @@
           title={rank.import}
           width={50}
           height={50}
-          on:click={(e) => {
+          on:click={async (e) => {
             if (e && e.target) {
               guess = true;
               guessRank = e.target.alt;
+              const a = newGuesses(guessRank, oldGuesses);
+              const b = await patchGuesses(id, a);
+              console.log(b)
             }
           }}
         />
