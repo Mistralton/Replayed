@@ -43,7 +43,7 @@
 
 <div class="modal-background" on:keydown={close} on:click={close} />
 
-<div class="modal z-10 h-56" role="dialog" aria-modal="true" bind:this={modalElement}>
+<div class="modal z-10 h-80" role="dialog" aria-modal="true" bind:this={modalElement}>
 	<slot name="header" />
 	<hr />
 	<slot />

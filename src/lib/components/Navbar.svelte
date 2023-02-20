@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { supabase } from '$lib/supabase';
 	import { z } from 'zod';
+	import { generateErrorMessage, ErrorMessageOptions } from 'zod-error';
 	import { modal, signedStatus } from '../../stores/stores';
 	import UploadModal from './UploadModal.svelte';
 	import { replayInfo, replayInsert } from './UploadReplay';
 	let login: HTMLDivElement;
-	let games = z.enum(['valorant', 'league of legends', 'overwatch']);
+	let games = z.enum(['valorant', 'league of legends', 'overwatch'])
 	const valorantRanks = z.enum([
 		'iron',
 		'bronze',
@@ -68,13 +69,17 @@
 		const rankSchema = getRankSchema(game);
 		rankSchema.parse(rank);
 	}
+
+	let errorMsg: string;
 </script>
 
 <nav class="flex-initial w-full flex items-center justify-between bg-stone-600 h-14">
 	<div class="flex gap-16 p-2 ml-4">
 		<a href="/" class="hover:text-white">Replayed</a>
 		<a href="/about" class="hover:text-white">About</a>
-		<p on:click={() => modal.set(true)} class="hover:cursor-pointer hover:text-white">
+		<p
+			on:keydown={() => modal.set(true)}
+			on:click={() => modal.set(true)} class="hover:cursor-pointer hover:text-white">
 			Upload a Clip
 		</p>
 	</div>
@@ -82,29 +87,42 @@
 		<UploadModal on:close={() => ($modal = false)}>
 			<h2 slot="header">Upload Your Clip</h2>
 			<form
-				class="h-36 flex flex-col"
+				class="h-48 flex flex-col"
 				on:submit={async (e) => {
-					games.parse(game.toLowerCase());
-					validateRank(game, rank.toLowerCase());
-					youtubeLink.parse(link);
-					let newObj = await replayInfo(game, rank, link);
-					const a = await replayInsert(newObj);
+					try {
+						if (game.toLowerCase() === "league") game = "league of legends"
+						games.parse(game.toLowerCase());
+						validateRank(game, rank.toLowerCase());
+						youtubeLink.parse(link);
+						youtubeLink.parse(link)
+						if (link.includes('&')) {
+							const splitLink = link.split('&')
+							link = splitLink[0]
+						}
+						rank = rank.charAt(0).toUpperCase() + rank.substring(1).toLowerCase();
+						game = game.split(" ").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
+						game = game.replace('Of', 'of')
+						let newObj = await replayInfo(game, rank, link);
+						const a = await replayInsert(newObj);
+					} catch (err) {
+						errorMsg = "Something went wrong inputting your form."
+					}
 				}}
 			>
 				<input
-					class="border-2 border-black rounded-sm my-2"
+					class="border-2 border-black rounded-sm my-2 p-1"
 					placeholder="Enter your game"
 					required
 					bind:value={game}
 				/>
 				<input
-					class="border-2 border-black rounded-sm my-2"
+					class="border-2 border-black rounded-sm my-2 p-1"
 					placeholder="Enter your rank"
 					required
 					bind:value={rank}
 				/>
 				<input
-					class="border-2 border-black rounded-sm my-2"
+					class="border-2 border-black rounded-sm my-2 p-1"
 					placeholder="Enter your link"
 					required
 					bind:value={link}
@@ -116,6 +134,20 @@
 					<button class="disabled:bg-opacity-50 my-2 p-1 bg-stone-600 rounded-lg" disabled
 						>You must be logged in</button
 					>
+				{/if}
+				{#if errorMsg}
+				<p class="text-red-500" style="font-size: 0.8rem; margin-top: 0.5rem;">
+					{errorMsg}
+				</p>
+				<p>
+					Valorant (or League, Overwatch)
+				</p>
+				<p>
+					Radiant (right ranks for game)
+				</p>
+				<p>
+					Real Youtube Link
+				</p>
 				{/if}
 			</form>
 		</UploadModal>
