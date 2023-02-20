@@ -18,7 +18,7 @@
 			</div>
 		</div>
 		<div class="p-10 w-1/3 flex justify-center">
-			<div class="bg-white h-20 rounded-lg w-16 h-16">profile icon</div>
+			<div class="bg-white rounded-lg w-16 h-16">profile icon</div>
 		</div>
 		<div />
 	</div>
@@ -31,17 +31,23 @@
 			</div>
 			<div class="grid grid-cols-3">
 				<img
+					on:keydown={() => hidePopper('valorant')}
 					on:click={() => hidePopper('valorant')}
+					alt="Valorant"
 					class="p-4 hover:scale-110 hover:cursor-pointer z-10 ease-out duration-500"
 					src="Valorant.png"
 				/>
 				<img
-					on:click={() => hidePopper('league')}
+					on:keydown={() => hidePopper('League of Legends')}
+					on:click={() => hidePopper('League of Legends')}
+					alt="League of Legends"
 					class="p-4 hover:scale-110 hover:cursor-pointer z-10 ease-out duration-500"
 					src="League.png"
 				/>
 				<img
+					on:keydown={() => hidePopper('overwatch')}
 					on:click={() => hidePopper('overwatch')}
+					alt="Overwatch 2"
 					class="p-4 hover:scale-110 hover:cursor-pointer z-10 ease-out duration-500"
 					src="Overwatch 2.png"
 				/>
@@ -50,22 +56,23 @@
 				bind:this={popout}
 				role="dialog"
 				aria-modal="true"
+				on:keydown={() => hidePopper()}
 				on:click={() => hidePopper()}
 				class="hidden z-20 absolute w-full h-full bg-[#000000e1]"
 			>
 				<div class="flex flex-col w-full h-full items-center justify-center">
 					<p class="text-white text-lg">X</p>
-					<div class="flex w-full items-center justify-center m-auto opacity-100 text-white gap-16">
-						<button
-							class="rounded-lg bg-stone-500 min-w-[100px] p-2 hover:bg-stone-400 transition-colors duration-500"
+					<div
+						class="flex w-full items-center justify-center m-auto opacity-100 text-white gap-16 text-center"
+					>
+						<a
+							class="rounded-lg bg-stone-500 min-w-[100px] hover:bg-stone-400 transition-colors duration-500"
+							href={`/replay/${game}`}>Traditional</a
 						>
-							<a href={`/replay/${game}`}>Traditional</a>
-						</button>
-						<button
-							class="rounded-lg bg-stone-500 min-w-[100px] p-2 hover:bg-stone-400 transition-colors duration-500"
+						<a
+							class="rounded-lg bg-stone-500 min-w-[100px] hover:bg-stone-400 transition-colors duration-500"
+							href={`/duel/${game}`}>Duel</a
 						>
-							<a href="/duel">Duel</a>
-						</button>
 					</div>
 				</div>
 			</div>

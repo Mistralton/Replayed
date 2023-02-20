@@ -1,12 +1,15 @@
 import { error } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
+import { generateTwoReplays } from './generateTwo';
 
 const games = ["League of Legends", "valorant", "overwatch"]
 
-export const load = (({ params }) => {
+export const load = (async ({ params }) => {
   if (games.includes(params.slug)) {
+    let two_replays = await generateTwoReplays(params.slug)
     return {
-      title: params.slug.toUpperCase()
+      title: params.slug.toUpperCase(),
+      replays: two_replays
     }
   }
 

@@ -28,10 +28,6 @@
     });
     const replayGuesses = guesses.map(guess => guess.guesses);
     const replayGuessRanks = guesses.map(guess => guess.rank);
-    
-    // console.log(guesses)
-    // console.log(replayGuessRanks)
-    // console.log(replayGuesses)
 
     const data = {
     		labels: replayGuessRanks,
