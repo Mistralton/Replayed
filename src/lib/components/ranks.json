@@ -1,0 +1,11 @@
+[
+{ "import": "../loliron.webp", "alt": "Iron" },
+{ "import": "../lolbronze.webp", "alt": "Bronze"},
+{ "import": "../lolsilver.webp", "alt": "Silver" },
+{ "import": "../lolgold.webp", "alt": "Gold" },
+{ "import": "../lolplat.webp", "alt": "Platinum" },
+{ "import": "../loldia.webp", "alt": "Diamond" },
+{ "import": "../lolmas.webp", "alt": "Master" },
+{ "import": "../lolgm.webp", "alt": "Grandmaster" },
+{ "import": "../lolchal.webp", "alt": "Challenger" }
+]
