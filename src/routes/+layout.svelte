@@ -1,5 +1,4 @@
 <script>
-	import Footer from "$lib/components/Footer.svelte";
 	import Navbar from "$lib/components/Navbar.svelte";
   import "../app.css";
 </script>
@@ -8,6 +7,5 @@
 	<main class="min-h-screen min-w-screen flex flex-col">
 		<Navbar />
 		<slot />
-		<!-- <Footer /> -->
 	</main>
 </div>

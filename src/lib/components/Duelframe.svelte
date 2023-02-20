@@ -1,11 +1,10 @@
 <script lang="ts">
-	import Comment from "./Comment.svelte";
-	import DuelGraph from "./DuelGraph.svelte";
-
-	export let replay;
-	export let title;
-	export let guess = "";
-	export let safeGraph = false
+	import type { Replay } from '$lib/db_res';
+	import Comment from './Comment.svelte';
+	import DuelGraph from './DuelGraph.svelte';
+	export let replay: Replay;
+	export let guess = '';
+	export let safeGraph = false;
 </script>
 
 <div class="flex flex-col items-center">
@@ -23,12 +22,16 @@
 				class="mx-auto"
 			/>
 		</div>
-    {#if guess.length === 0}
-			<button disabled={guess.length > 0} on:click={() => guess = `${replay.user}'s play`}
-      class="mt-4 bg-stone-600 disabled:bg-opacity-25 rounded-lg p-2 drop-shadow border-stone-50 tracking-tighter">Higher</button>
+		{#if guess.length === 0}
+			<button
+				disabled={guess.length > 0}
+				on:click={() => (guess = `${replay.user}'s play`)}
+				class="mt-4 bg-stone-600 disabled:bg-opacity-25 rounded-lg p-2 drop-shadow border-stone-50 tracking-tighter"
+				>Higher</button
+			>
 		{/if}
 		{#if safeGraph && guess.length > 0}
-			<DuelGraph replay={replay} />
+			<DuelGraph {replay} />
 			<Comment comments={replay.comments} id={replay.id} />
 		{/if}
 	{/if}
