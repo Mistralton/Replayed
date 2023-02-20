@@ -39,9 +39,9 @@
 
 <nav class="flex-initial w-full flex justify-between bg-stone-600 h-10">
 	<div class="flex gap-16 p-2 ml-4">
-    <a href="/">Replayed</a>
-    <a href="/about">About</a>
-    <p on:click={() => modal.set(true)}>Upload a Clip</p>
+    <a href="/" class="hover:text-white">Replayed</a>
+    <a href="/about" class="hover:text-white">About</a>
+    <p on:click={() => modal.set(true)} class="hover:cursor-pointer hover:text-white">Upload a Clip</p>
   </div>
   {#if $modal}
     <UploadModal on:close="{() => $modal = false}">
@@ -70,14 +70,14 @@
    {/if}
 	<div class="flex gap-16 p-2 mr-4 relative">
 		{#if $signedStatus}
-      <a href="/about">Profile</a>
-      <button on:click={async () => supabase.auth.signOut()}>Log Out</button>
+      <a href="/about" class="hover:text-white">Profile</a>
+      <button on:click={async () => supabase.auth.signOut()} class="hover:text-white">Log Out</button>
 		{:else}
       <button
         on:click={() => {
           login.classList.toggle('hidden');
           login.classList.toggle('flex flex-col');
-        }}>Login</button
+        }} class="hover:text-white">Login</button
       >
       <div
         bind:this={login}

@@ -25,7 +25,7 @@
 			</p>
 			<div class="flex gap-16 justify-center w-full">
 				<button class="p-2 bg-stone-600 rounded-lg">
-					<a href="/choose">Get Started</a>
+					<a href="/choose" class="hover:text-white">Get Started</a>
 				</button>
 			</div>
 		</div>
