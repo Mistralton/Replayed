@@ -5,7 +5,7 @@ export async function replayInfo(game: string, rank: string, link: string) {
 	let user = currUser.data.user?.user_metadata.full_name;
 	let defaults: { rank: string; guesses: number }[] = [];
 
-  // Default is set to league rank system, so need to manually change here
+	// Default is set to league rank system, so need to manually change here
 	if (game === 'Valorant') {
 		defaults = [
 			{

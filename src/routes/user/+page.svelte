@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { supabase } from "$lib/supabase";
   import { onMount } from 'svelte';
-  let user
-  let userReplays
+  let user: { name: any; avatar: any; }
+  let userReplays: any[]
   onMount(async () => {
     let currUser = await supabase.auth.getUser()
     user = {

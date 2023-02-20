@@ -1,28 +1,29 @@
 import { json, type RequestEvent } from '@sveltejs/kit';
 import { supabase } from '../rlsSupabase';
 
-    // {
-    //       id: 0
-    //       changes: [{rank: guessRank,
-    //                  guesses: 2}]
-    // }
+// {
+//       id: 0
+//       changes: [{rank: guessRank,
+//                  guesses: 2}]
+// }
 
 export async function PATCH({ request }: RequestEvent) {
-    const newValues: {id: number, changes: [{rank: string, guesses: number}]} = await request.json();
-    
-    const { data, error } = await supabase
-    .from('replays')
-    .update({
-        guesses: newValues.changes
-      })
-    .eq('id', newValues.id)
+	const newValues: { id: number; changes: [{ rank: string; guesses: number }] } =
+		await request.json();
 
-    if (error) {
-        return {
-          status: 500,
-          body: error.message
-        };
-      }
+	const { data, error } = await supabase
+		.from('replays')
+		.update({
+			guesses: newValues.changes
+		})
+		.eq('id', newValues.id);
 
-    return json(newValues.changes)
+	if (error) {
+		return {
+			status: 500,
+			body: error.message
+		};
+	}
+
+	return json(newValues.changes);
 }

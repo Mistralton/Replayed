@@ -5,7 +5,7 @@
 	export let replay: Replay;
 	export let guess = '';
 	export let safeGraph = false;
-	export let updateGuess: (newGuess: string) => void
+	export let updateGuess: (newGuess: string) => void;
 	export let higher: number;
 	let clicked = false;
 </script>
@@ -29,19 +29,19 @@
 			<button
 				disabled={guess.length > 0}
 				on:click={async () => {
-					guess = `${replay.user}'s play`
-					clicked = true
+					guess = `${replay.user}'s play`;
+					clicked = true;
 					updateGuess(guess);
-				} }
+				}}
 				class="mt-4 bg-stone-600 disabled:bg-opacity-25 rounded-lg p-2 drop-shadow border-stone-50 tracking-tighter"
 				>Higher</button
 			>
 		{/if}
 		{#if guess.length > 0}
 			<p class="text-white mt-4">
-				I was {higher === replay.id ? "higher" : "lower"}
+				I was {higher === replay.id ? 'higher' : 'lower'}
 			</p>
-			<p class="text-white mt-4">{clicked ? "You guessed me!" : "You did not guess me!"}</p>
+			<p class="text-white mt-4">{clicked ? 'You guessed me!' : 'You did not guess me!'}</p>
 		{/if}
 		{#if safeGraph && guess.length > 0}
 			<DuelGraph {replay} />
