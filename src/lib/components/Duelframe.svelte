@@ -5,10 +5,10 @@
 	export let replay;
 	export let title;
 	export let guess = "";
-	console.log(replay.comments)
+	export let safeGraph = false
 </script>
 
-<div class="flex flex-col items-center justify-center h-full">
+<div class="flex flex-col items-center">
 	{#if replay}
 		<h1 class="text-white text-center p-10">Submitted by {replay.user}</h1>
 		<div class="flex gap-16">
@@ -23,11 +23,13 @@
 				class="mx-auto"
 			/>
 		</div>
-    <button disabled={guess.length > 0} on:click={() => guess = `${replay.user}'s play`}
+    {#if guess.length === 0}
+			<button disabled={guess.length > 0} on:click={() => guess = `${replay.user}'s play`}
       class="mt-4 bg-stone-600 disabled:bg-opacity-25 rounded-lg p-2 drop-shadow border-stone-50 tracking-tighter">Higher</button>
-		{#if guess.length > 0}
+		{/if}
+		{#if safeGraph && guess.length > 0}
 			<DuelGraph replay={replay} />
-			<Comment comments={replay.comments} />
+			<Comment comments={replay.comments} id={replay.id} />
 		{/if}
 	{/if}
 </div>

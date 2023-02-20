@@ -10,7 +10,7 @@
     { "game": "League of Legends", "import": "../lolchal.webp", "alt": "Challenger" },
     { "game": "Valorant", "import": "../valoiron.webp","alt": "Iron" },
     { "game": "Valorant", "import": "../valobronze.webp","alt": "Bronze" },
-    { "game": "Valorant", "import": "../valorsilver.webp","alt": "Silver" },
+    { "game": "Valorant", "import": "../valosilver.webp","alt": "Silver" },
     { "game": "Valorant", "import": "../valogold.webp","alt": "Gold" },
     { "game": "Valorant", "import": "../valoplatinum.webp","alt": "Platinum" },
     { "game": "Valorant", "import": "../valodiamond.webp","alt": "Diamond" },

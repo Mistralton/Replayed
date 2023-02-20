@@ -5,6 +5,7 @@
 	import { supabase } from '../../../lib/supabase';
 	import GuessStat from '../../../lib/components/GuessStat.svelte';
 	import RankGrid from '../../../lib/components/RankGrid.svelte';
+	import Comment from '$lib/components/Comment.svelte';
 
 	export let data: PageData;
 
@@ -15,7 +16,8 @@
 	let replay: any;
 
 	onMount(async () => {
-		let { data: replays, error } = await supabase.from('replays').select();
+		console.log(data.title)
+		let { data: replays, error } = await supabase.from('replays').select().eq('game', data.title);
 		replaylist = replays;
 		const randindex = Math.floor(Math.random() * replaylist.length);
 		replay = replaylist[randindex];
@@ -23,7 +25,7 @@
 
 </script>
 
-<div class="flex flex-col">
+<div class="flex flex-col items-center flex-1">
 	{#if replay}
 		<h1 class="text-white text-center p-10">Submitted by {replay.user}</h1>
 		<iframe
@@ -37,8 +39,9 @@
 			class="mx-auto"
 		/>
 	{/if}
+	<RankGrid bind:guess bind:guessRank replay={replay}/>
 	{#if guess === true }
-		<div class="flex justify-evenly p-5">
+		<div class="flex justify-evenly p-5 gap-16">
 			<div>
 				<h2 class="text-white">Your Guess</h2>
 				<p class="text-white font-bold">{guessRank}</p>
@@ -48,14 +51,11 @@
 				<p class="text-white font-bold">{replay.rank}</p>
 			</div>
 		</div>
-		
+
 		<GuessStat replay={replay}/>
-		
-		
-	{/if}
-	{#if data.title === 'valorant' && guess === false}valorant{/if}
-	{#if data.title === 'overwatch' && guess === false}overwatch 2{/if}
-	{#if data.title === 'LEAGUE OF LEGENDS' && guess === false && replay}
-		<RankGrid bind:guess bind:guessRank replay={replay}/>
+
+		<Comment position="single" comments={replay.comments} id={replay.id} />
+
+
 	{/if}
 </div>

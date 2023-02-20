@@ -17,7 +17,7 @@
         guesses: number;
     }
 
-    const rankNames = ranks.map(rank => rank.alt);
+    const rankNames = ranks.filter(rank => rank.game === replay.game).map(rank => rank.alt);
 
     const guesses: guess[] = replay.guesses;
 
@@ -63,9 +63,9 @@
       LinearScale
     );
   </script>
-  
-  <div class="w-1/2 mx-auto">
-    <Bar {data} 
+
+  <div class="w-1/2 mx-auto mb-8">
+    <Bar {data}
     width={50}
     height={500}
     options={{ maintainAspectRatio: false }}/>
