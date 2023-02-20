@@ -1,18 +1,23 @@
-# create-svelte
+<div align="center">
+  <h1>Replayed</h1>
+Replayed is a website that lets you play a game where you guess the rank of user submitted clips, or pick the higher between two clips.
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+<img src="/static/ss.webp">
 
-## Creating a project
+<img src="https://img.shields.io/badge/svelte-%23f1413d.svg?style=for-the-badge&logo=svelte&logoColor=white"> <img src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white"> <img src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white"> <img src="https://img.shields.io/badge/chart.js-F5788D.svg?style=for-the-badge&logo=chart.js&logoColor=white">
 
-If you're seeing this, you've probably already done this step. Congrats!
+</div>
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+## What it does
+Replayed is a website that allows users to guess the competitive ladder rank of user submitted clips for games they see on their feed. Once they guess, they are told if they guessed correctly and are shown statistics about the distribution of guesses from other users. They are also able to comment and share their thoughts in a comment section specific to the clip they just rated. Additionally, they can upload their own clips to be rated by other users.
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+## To Implement when more time
+Streaks for more gamification
+Able to interact with other user profiles
+Location.reload on the traditional route needs to be changed
+Handle Zod error uniquely.
+
+Looking forward, we are hoping to support more games, improve our UI design, UX experience, and grow our user-base community.
 
 ## Developing
 
