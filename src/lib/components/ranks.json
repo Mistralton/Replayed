@@ -5,8 +5,8 @@
     { "game": "League of Legends", "import": "../lolgold.webp", "alt": "Gold" },
     { "game": "League of Legends", "import": "../lolplat.webp", "alt": "Platinum" },
     { "game": "League of Legends", "import": "../loldia.webp", "alt": "Diamond" },
-    { "game": "League of Legends", "import": "../lolmas.webp", "alt": "Master" },
-    { "game": "League of Legends", "import": "../lolgm.webp", "alt": "Grandmaster" },
+    { "game": "League of Legends", "import": "../lolmas.webp", "alt": "Masters" },
+    { "game": "League of Legends", "import": "../lolgm.webp", "alt": "Grandmasters" },
     { "game": "League of Legends", "import": "../lolchal.webp", "alt": "Challenger" },
     { "game": "Valorant", "import": "../valoiron.webp","alt": "Iron" },
     { "game": "Valorant", "import": "../valobronze.webp","alt": "Bronze" },
@@ -22,7 +22,7 @@
     { "game": "Overwatch", "import": "../ow2gold.webp", "alt": "Gold" },
     { "game": "Overwatch", "import": "../ow2platinum.webp", "alt": "Platinum" },
     { "game": "Overwatch", "import": "../ow2diamond.webp", "alt": "Diamond" },
-    { "game": "Overwatch", "import": "../ow2master.webp", "alt": "Master" },
-    { "game": "Overwatch", "import": "../ow2grandmaster.webp", "alt": "Grand Master" },
+    { "game": "Overwatch", "import": "../ow2master.webp", "alt": "Masters" },
+    { "game": "Overwatch", "import": "../ow2grandmaster.webp", "alt": "Grand Masters" },
     { "game": "Overwatch", "import": "../ow2top500.webp", "alt": "Top 500" }
 ]
