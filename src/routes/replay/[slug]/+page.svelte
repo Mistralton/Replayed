@@ -60,6 +60,8 @@
 
 		<Comment position="single" comments={replay.comments} id={replay.id} />
 
-
+		<button on:click={() => {
+			location.reload()
+		}} class="p-2 bg-stone-600 rounded-lg mb-10">Play Again</button>
 	{/if}
 </div>
