@@ -13,7 +13,7 @@
       <div>
         <h2 class="text-xl font-bold">Reagan Vu</h2>
         <p class="mt-4">I grew up playing a lot of games (probably more than I should have) and evetually made my way down the "become a game developer" pipeline. I currently study Computer Science and Software Engineering at UW and plan to graduate 2024 Spring. The games I primarily play are League of Legends (Diamond Support Main), Valorant (Gold Viper OTP),
-          TFT (Plat in Double Ups), and BTD6 (Ben Jammin Enthusiast).
+          TFT (Plat in Double Up), and BTD6 (Veteran Level 4 Ben Jammin Enthusiast).
         </p>
       </div>
     </div>
@@ -27,7 +27,7 @@
     </div>
 
     <div class="flex gap-8 mt-24">
-      <img src="Ashe.png" width="500">
+      <img src="Kyle.png" width="500">
       <div>
         <h2 class="text-xl font-bold">Kyle Leung</h2>
         <p>Hi my name is Kyle. 
@@ -36,7 +36,7 @@
     </div>
 
     <img class="mt-24" src="Technicals.webp" width="500">
-    <h2 class="text-xl font-bold mt-4">Technical</h2>
+    <h2 class="text-xl font-bold mt-4">Technical Information</h2>
     <p>
       This project was made for the Bay Area Hacks Hackathon. It was developed by Kyle Leung, Reagan Vu, and Wesley Nguyen. The primary technologies that we used were SvelteKit,
       TypeScript, Tailwind, Chart.js, and Supabase.
