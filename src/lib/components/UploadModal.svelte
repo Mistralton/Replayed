@@ -1,21 +1,23 @@
 <script lang="ts">
 	import { createEventDispatcher, onDestroy } from 'svelte';
+	import { modal } from '../../stores/stores';
 
 	const dispatch = createEventDispatcher();
 	const close = () => dispatch('close');
 
-	let modal: HTMLDivElement;
+	let modalElement: HTMLDivElement;
 
 	const handle_keydown = (e: KeyboardEvent) => {
 		if (e && e.key === 'Escape') {
+			modal.set(false)
 			close();
 			return;
 		}
 
-		if (e.key === 'Tab' && modal) {
+		if (e.key === 'Tab' && modalElement) {
 			// trap focus
-			const nodes: NodeListOf<HTMLElement> = modal.querySelectorAll('*');
-			const tabbable = Array.from(nodes).filter(n => n.tabIndex >= 0);
+			const nodes: NodeListOf<HTMLElement> = modalElement.querySelectorAll('*');
+			const tabbable = Array.from(nodes).filter((n) => n.tabIndex >= 0);
 
 			let index = tabbable.indexOf(document.activeElement as HTMLElement);
 			if (index === -1 && e.shiftKey) index = 0;
@@ -37,15 +39,15 @@
 	}
 </script>
 
-<svelte:window on:keydown={handle_keydown}/>
+<svelte:window on:keydown={handle_keydown} />
 
-<div class="modal-background" on:click={close}></div>
+<div class="modal-background" on:keydown={close} on:click={close} />
 
-<div class="modal z-10 h-56" role="dialog" aria-modal="true" bind:this={modal}>
-	<slot name="header"></slot>
-	<hr>
-	<slot></slot>
-	<hr>
+<div class="modal z-10 h-56" role="dialog" aria-modal="true" bind:this={modalElement}>
+	<slot name="header" />
+	<hr />
+	<slot />
+	<hr />
 </div>
 
 <style>
@@ -55,7 +57,7 @@
 		left: 0;
 		width: 100%;
 		height: 200%;
-		background: rgba(0,0,0,0.3);
+		background: rgba(0, 0, 0, 0.3);
 	}
 
 	.modal {
@@ -66,7 +68,7 @@
 		max-width: 32em;
 		max-height: calc(100vh);
 		overflow: auto;
-		transform: translate(-50%,-50%);
+		transform: translate(-50%, -50%);
 		padding: 1em;
 		border-radius: 0.2em;
 		background: white;

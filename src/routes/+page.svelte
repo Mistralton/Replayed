@@ -14,9 +14,9 @@ import { supabase } from "$lib/supabase";
 </script>
 
 <div class="flex flex-col justify-center items-center flex-1 mt-[20vh]">
-  <div class="flex justify-center items-center gap-16 mb-48">
-    <div>
-      <h1 class="text-8xl text-white tracking-tight font-semibold drop-shadow-md text-center mb-4">
+  <div class="flex justify-center items-center gap-16 mb-48 z-0">
+    <div class="z-0">
+      <h1 class="text-8xl text-white tracking-tight font-semibold drop-shadow-md text-center mb-4 z-0">
         Replayed
       </h1>
       <p class="text-2xl text-white font-thin text-center mb-8">Rise to the top, one replay at a time.</p>
@@ -33,10 +33,3 @@ import { supabase } from "$lib/supabase";
   <LandingCard order={false} title={"Upload Your Best (Or Worst) Clips"} text={"Watch, guess, and comment on the ranks of user submitted clips on your feed and see how you match up against other guessers!"}/>
   <LandingCard order={true} title={"Made For People Who Solo Bolo or Duo Queue"} text={"Judge one clip at a time in our single player mode or test your skills and compare the ranks of two simultaneously in our duels mode!"}/>
 </div>
-
-
-<style lang="postcss">
-  :global(html) {
-    background-color: theme(colors.gray.100);
-  }
-</style>

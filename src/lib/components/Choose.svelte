@@ -3,40 +3,45 @@
   let game: string;
 	let popout: HTMLDivElement;
 	function hidePopper(passGame?: string) {
-    $modal ? "" : () => {
+    if ($modal === false) {
       popout.classList.toggle('hidden');
 		  if (passGame) game = passGame;
     }
 	}
 </script>
 
-<div class="flex flex-1 items-center z-0">
+<div class="flex flex-1 items-center z-0 text-white">
   <div class="h-max flex flex-col items-center relative">
     <div class="p-4 w-1/3 flex flex-col">
       <p class="text-white text-center text-2xl font-semibold tracking-tigher mb-0">
         Choose Your Game
       </p>
     </div>
+    {#if $modal}
+    <p>modal is true so choose is not working</p>
+    {:else}
+    <p>should work modal is false</p>
+    {/if}
     <div class="grid grid-cols-3">
       <img
         on:keydown={() => hidePopper('valorant')}
         on:click={() => hidePopper('valorant')}
         alt="Valorant"
-        class="p-4 hover:scale-110 hover:cursor-pointer z-10 ease-out duration-500"
+        class="p-4 hover:scale-110 hover:cursor-pointer ease-out duration-500"
         src="Valorant.png"
       />
       <img
         on:keydown={() => hidePopper('League of Legends')}
         on:click={() => hidePopper('League of Legends')}
         alt="League of Legends"
-        class="p-4 hover:scale-110 hover:cursor-pointer z-10 ease-out duration-500"
+        class="p-4 hover:scale-110 hover:cursor-pointer ease-out duration-500"
         src="League.png"
       />
       <img
         on:keydown={() => hidePopper('overwatch')}
         on:click={() => hidePopper('overwatch')}
         alt="Overwatch 2"
-        class="p-4 hover:scale-110 hover:cursor-pointer z-10 ease-out duration-500"
+        class="p-4 hover:scale-110 hover:cursor-pointer ease-out duration-500"
         src="Overwatch 2.png"
       />
     </div>
