@@ -11,14 +11,6 @@ Replayed is a website that lets you play a game where you guess the rank of user
 ## What it does
 Replayed is a website that allows users to guess the competitive ladder rank of user submitted clips for games they see on their feed. Once they guess, they are told if they guessed correctly and are shown statistics about the distribution of guesses from other users. They are also able to comment and share their thoughts in a comment section specific to the clip they just rated. Additionally, they can upload their own clips to be rated by other users.
 
-## To Implement when more time
-Streaks for more gamification
-Able to interact with other user profiles
-Location.reload on the traditional route needs to be changed
-Handle Zod error uniquely.
-
-Looking forward, we are hoping to support more games, improve our UI design, UX experience, and grow our user-base community.
-
 ## Developing
 
 Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
@@ -41,3 +33,14 @@ npm run build
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+
+## To Implement when more time
+Streaks for more gamification
+
+Able to interact with other user profiles
+
+Location.reload on the traditional route needs to be changed
+
+Handle Zod error uniquely.
+
+Looking forward, we are hoping to support more games, improve our UI design, UX experience, and grow our user-base community.
