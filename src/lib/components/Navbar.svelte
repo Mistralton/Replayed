@@ -24,7 +24,6 @@
       <form class="h-64 flex flex-col" on:submit={async (e) => {
         let newObj = await replayInfo(game, rank, link);
         const a = await replayInsert(newObj)
-        console.log(newObj)
 
         }}>
         <input class="border-2 border-black rounded-sm my-2" placeholder="Enter your game" required bind:value={game}/>
@@ -37,7 +36,7 @@
           <button class="my-2 p-1 bg-stone-600 rounded-lg" disabled>You must be logged in</button>
         {/if}
       </form>
-    </UploadModal> 
+    </UploadModal>
    {/if}
 	<div class="flex gap-16 p-2 mr-4 relative">
 		{#if $signedStatus}
