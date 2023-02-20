@@ -15,18 +15,18 @@
 	let replay: Replay;
 
 	onMount(async () => {
-		console.log(data.title);
 		let { data: replays, error } = await supabase.from('replays').select().eq('game', data.title);
 		if (replays) {
 			replaylist = replays;
 			const randindex = Math.floor(Math.random() * replaylist.length);
 			replay = replaylist[randindex];
 		}
-
-		console.log(replaylist);
-		console.log(replay);
 	});
 </script>
+
+<svelte:head>
+	<title>Replayed.gg - Challenge</title>
+</svelte:head>
 
 <div class="flex flex-col items-center flex-1">
 	{#if replay}
@@ -58,5 +58,9 @@
 		<GuessStat {replay} />
 
 		<Comment position="single" comments={replay.comments} id={replay.id} />
+
+		<button on:click={() => {
+			location.reload()
+		}} class="p-2 bg-stone-600 rounded-lg mb-10">Play Again</button>
 	{/if}
 </div>

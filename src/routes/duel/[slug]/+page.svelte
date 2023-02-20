@@ -10,6 +10,11 @@
 	const ranksValues = ranks
 		.filter((rank) => rank.game === data.replays[0].game)
 		.map((rank) => rank.alt);
+
+	const ranksImages = ranks
+		.filter((rank) => rank.game === data.replays[0].game)
+		.map((rank) => rank.import);
+
 	async function generateNewRound() {
 		let { data: replays, error } = await supabase.from('replays').select().eq('game', data.title);
 		let first = replays![Math.floor(Math.random() * replays!.length)];
@@ -64,13 +69,16 @@
 	}
 </script>
 
+<svelte:head>
+	<title>Replayed.gg - Duel</title>
+</svelte:head>
+
 <div class="flex flex-col items-center justify-center flex-1 relative mt-8 h-full">
 	<div class="absolute top-1/4 flex flex-col items-center">
 		<h2 class="text-3xl text-white font-semibold max-w-2xl text-center">
 			Which of these two clips are higher rank?
 		</h2>
 		{#if guess}
-			<p>{guess}</p>
 			<button
 				on:click={generateNewRound}
 				class="absolute z-50 top-20 bg-stone-600 rounded-lg p-2 h-max drop-shadow border-stone-50 tracking-tighter self-center"
@@ -79,11 +87,22 @@
 			</button>
 		{/if}
 		<div class="flex gap-16 justify-center items-center relative h-full flex-1">
-			<Duelframe {higher} bind:safeGraph bind:guess {updateGuess} replay={data.replays[0]} />
-			<Duelframe {higher} bind:safeGraph bind:guess {updateGuess} replay={data.replays[1]} />
+			<Duelframe
+				{higher}
+				image={ranksImages[ranksValues.indexOf(data.replays[0].rank)]}
+				bind:safeGraph
+				bind:guess
+				{updateGuess}
+				replay={data.replays[0]}
+			/>
+			<Duelframe
+				{higher}
+				image={ranksImages[ranksValues.indexOf(data.replays[1].rank)]}
+				bind:safeGraph
+				bind:guess
+				{updateGuess}
+				replay={data.replays[1]}
+			/>
 		</div>
 	</div>
-	{#if guess}
-		<h2 class="text-white mt-4 mb-4">Your Guess was {guess}! {higher}</h2>
-	{/if}
 </div>

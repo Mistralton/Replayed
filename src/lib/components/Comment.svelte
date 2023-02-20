@@ -39,7 +39,7 @@
 
 <div
 	class={`flex flex-col items-center flex-1 gap-4 ${
-		position === 'single' ? 'mb-24' : 'mt-40 absolute top-3/4'
+		position === 'single' ? 'mb-24' : 'mt-48 absolute top-3/4'
 	}  w-[34rem]`}
 >
 	<form class="w-full" on:submit={(e) => handleSubmit(e, comments)}>
