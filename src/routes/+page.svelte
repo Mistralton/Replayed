@@ -30,9 +30,9 @@ import { supabase } from "$lib/supabase";
     </div>
     <video width="500" autoplay controls muted src="test1.mp4" />
   </div>
-  <LandingCard order={true} title={"Choose Your Game"} text={"From MOBAs like League of Legends, to FPS games like Valorant, our website supports a variety of different games to choose from."}/>
-  <LandingCard order={false} title={"Upload Your Best (Or Worst) Clips"} text={"Watch, guess, and comment on the ranks of replay clips you notice and see how you match up against other guessers."}/>
-  <LandingCard order={true} title={"Made For People Who Solo Bolo or Duo Queue"} text={"Judge one clip at a time in our single player mode or test your skills and compare the ranks of two clips at the same time in our duels mode!"}/>
+  <LandingCard order={true} title={"Choose Your Game"} text={"From MOBAs like League of Legends, to FPS games like Valorant, our website currently supports several different games with more coming soon!"}/>
+  <LandingCard order={false} title={"Upload Your Best (Or Worst) Clips"} text={"Watch, guess, and comment on the ranks of user submitted clips on your feed and see how you match up against other guessers!"}/>
+  <LandingCard order={true} title={"Made For People Who Solo Bolo or Duo Queue"} text={"Judge one clip at a time in our single player mode or test your skills and compare the ranks of two simultaneously in our duels mode!"}/>
 </div>
 
 
