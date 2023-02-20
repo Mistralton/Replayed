@@ -1,10 +1,9 @@
 <script lang="ts">
 	import { supabase } from '$lib/supabase';
-	import { signedStatus } from '../../stores/stores';
+	import { modal, signedStatus } from '../../stores/stores';
   import UploadModal from './UploadModal.svelte'
   import { replayInfo, replayInsert } from "./UploadReplay";
 	let login: HTMLDivElement;
-  let showModal = false;
   let game = "";
   let rank = "";
   let link = "";
@@ -14,10 +13,10 @@
 	<div class="flex gap-16 p-2 ml-4">
     <a href="/">Replayed</a>
     <a href="/about">About</a>
-    <p on:click={() => showModal = true}>Upload a Clip</p>
+    <p on:click={() => modal.set(true)}>Upload a Clip</p>
   </div>
-  {#if showModal}
-    <UploadModal on:close="{() => showModal = false}">
+  {#if $modal}
+    <UploadModal on:close="{() => $modal = false}">
       <h2 slot="header">
         Upload Your Clip
       </h2>
@@ -33,7 +32,7 @@
           <button class="my-2 p-1 bg-stone-600 rounded-lg">Upload</button>
         {/if}
         {#if !$signedStatus}
-          <button class="my-2 p-1 bg-stone-600 rounded-lg" disabled>You must be logged in</button>
+          <button class="disabled:bg-opacity-50 my-2 p-1 bg-stone-600 rounded-lg" disabled>You must be logged in</button>
         {/if}
       </form>
     </UploadModal>

@@ -1,9 +1,12 @@
 <script lang="ts">
+	import { modal } from "../../stores/stores";
   let game: string;
 	let popout: HTMLDivElement;
 	function hidePopper(passGame?: string) {
-		popout.classList.toggle('hidden');
-		if (passGame) game = passGame;
+    $modal ? "" : () => {
+      popout.classList.toggle('hidden');
+		  if (passGame) game = passGame;
+    }
 	}
 </script>
 
