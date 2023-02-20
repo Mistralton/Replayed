@@ -13,6 +13,6 @@
     <p class="mt-4">{text}</p>
   </div>
   {#if order}
-    <img width="450" src="rankshome.webp" />
+    <img width="500" src="rankshome.webp" />
   {/if}
 </div>
