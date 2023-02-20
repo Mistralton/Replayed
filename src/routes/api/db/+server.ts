@@ -1,5 +1,4 @@
 import { json } from '@sveltejs/kit';
-import { createClient } from '@supabase/supabase-js'
 import { supabase } from '../rlsSupabase';
 
     // {
@@ -17,7 +16,6 @@ export async function PATCH({ request }: any) {
         guesses: newValues.changes
       })
     .eq('id', newValues.id)
-    console.log(newValues.id)
 
     if (error) {
         return {

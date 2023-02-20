@@ -1,15 +1,44 @@
 <script lang="ts">
 	import { supabase } from '$lib/supabase';
 	import { signedStatus } from '../../stores/stores';
+  import UploadModal from './UploadModal.svelte'
+  import { replayInfo, replayInsert } from "./UploadReplay";
 	let login: HTMLDivElement;
+  let showModal = false;
+  let game = "";
+  let rank = "";
+  let link = "";
 </script>
 
 <nav class="flex-initial w-full flex justify-between bg-stone-600 h-10">
 	<div class="flex gap-16 p-2 ml-4">
     <a href="/">Replayed</a>
     <a href="/about">About</a>
-    <a href="/about">Upload a Clip</a>
+    <p on:click={() => showModal = true}>Upload a Clip</p>
   </div>
+  {#if showModal}
+    <UploadModal on:close="{() => showModal = false}">
+      <h2 slot="header">
+        Upload Your Clip
+      </h2>
+      <form class="h-64 flex flex-col" on:submit={async (e) => {
+        let newObj = await replayInfo(game, rank, link);
+        const a = await replayInsert(newObj)
+        console.log(newObj)
+
+        }}>
+        <input class="border-2 border-black rounded-sm my-2" placeholder="Enter your game" required bind:value={game}/>
+        <input class="border-2 border-black rounded-sm my-2" placeholder="Enter your rank" required bind:value={rank}/>
+        <input class="border-2 border-black rounded-sm my-2" placeholder="Enter your link" required bind:value={link}/>
+        {#if $signedStatus}
+          <button class="my-2 p-1 bg-stone-600 rounded-lg">Upload</button>
+        {/if}
+        {#if !$signedStatus}
+          <button class="my-2 p-1 bg-stone-600 rounded-lg" disabled>You must be logged in</button>
+        {/if}
+      </form>
+    </UploadModal> 
+   {/if}
 	<div class="flex gap-16 p-2 mr-4 relative">
 		{#if $signedStatus}
       <a href="/about">Profile</a>
