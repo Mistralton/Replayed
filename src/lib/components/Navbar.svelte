@@ -21,7 +21,7 @@
       <h2 slot="header">
         Upload Your Clip
       </h2>
-      <form class="h-64 flex flex-col" on:submit={async (e) => {
+      <form class="h-36 flex flex-col" on:submit={async (e) => {
         let newObj = await replayInfo(game, rank, link);
         const a = await replayInsert(newObj)
 

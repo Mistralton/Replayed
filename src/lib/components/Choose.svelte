@@ -7,7 +7,7 @@
 	}
 </script>
 
-<div class="flex flex-1 items-center">
+<div class="flex flex-1 items-center z-0">
   <div class="h-max flex flex-col items-center relative">
     <div class="p-4 w-1/3 flex flex-col">
       <p class="text-white text-center text-2xl font-semibold tracking-tigher mb-0">

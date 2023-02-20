@@ -14,7 +14,7 @@ import { supabase } from "$lib/supabase";
 </script>
 
 <div class="flex flex-col justify-center items-center flex-1 mt-[20vh]">
-  <div class="flex justify-center items-center gap-16 mb-32">
+  <div class="flex justify-center items-center gap-16 mb-48">
     <div>
       <h1 class="text-8xl text-white tracking-tight font-semibold drop-shadow-md text-center mb-4">
         Replayed
@@ -23,9 +23,6 @@ import { supabase } from "$lib/supabase";
       <div class="flex gap-16 justify-center w-full">
         <button class="p-2 bg-stone-600 rounded-lg">
           <a href="/choose">Get Started</a>
-        </button>
-        <button class="p-2 bg-stone-600 rounded-lg">
-          <a href="/choose">Upload a Clip</a>
         </button>
       </div>
     </div>

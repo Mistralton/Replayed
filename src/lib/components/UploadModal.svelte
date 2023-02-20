@@ -41,14 +41,11 @@
 
 <div class="modal-background" on:click={close}></div>
 
-<div class="modal z-10 h-" role="dialog" aria-modal="true" bind:this={modal}>
+<div class="modal z-10 h-56" role="dialog" aria-modal="true" bind:this={modal}>
 	<slot name="header"></slot>
 	<hr>
 	<slot></slot>
 	<hr>
-
-	<!-- svelte-ignore a11y-autofocus -->
-	<button autofocus on:click={close} class="my-2 p-1 bg-stone-600 rounded-lg">close modal</button>
 </div>
 
 <style>
