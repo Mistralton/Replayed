@@ -2,7 +2,7 @@
 	import ranks from '../../assets/ranks.json';
 	import { newGuesses, patchGuesses } from '../../routes/replay/[slug]/UpdatedGuesses';
 	import type { Replay } from '../db_res';
-	export let guess;
+	export let guess: boolean;
 	export let guessRank;
 	export let replay: Replay;
 
@@ -18,7 +18,7 @@
 
 <div class="flex justify-evenly py-5">
 	<div class="flex">
-		{#if replay}
+		{#if replay && !guess}
 			{#each ranks.filter((replaye) => replaye.game === replay.game) as rank}
 				<img
 					class="m-4 h-20 w-20 hover:cursor-pointer"
@@ -30,6 +30,17 @@
 					on:keydown={async (e) => await handleClick(e)}
 					on:click={async (e) => await handleClick(e)}
 				/>
+			{/each}
+			{:else if replay && guess}
+			{#each ranks.filter((replaye) => replaye.game === replay.game) as rank}
+			<img
+				class="m-4 h-20 w-20"
+				src={rank.import}
+				alt={rank.alt}
+				title={rank.import}
+				width={50}
+				height={50}
+			/>
 			{/each}
 		{/if}
 	</div>
