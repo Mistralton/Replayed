@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { PageData } from './$types';
   import Duelframe from '$lib/components/Duelframe.svelte';
-  import ranks from '$lib/components/ranks.json';
+  import ranks from '../../../assets/ranks.json';
 	import { supabase } from '$lib/supabase';
 
   const ranksValues = ranks.map((rank) => rank.alt);

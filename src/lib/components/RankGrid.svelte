@@ -1,11 +1,19 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import ranks from './ranks.json';
+	import ranks from '../../assets/ranks.json';
 	import { newGuesses, patchGuesses } from '../../routes/replay/[slug]/UpdatedGuesses';
-	import type {Replay} from '../db_res'
+	import type { Replay } from '../db_res';
 	export let guess;
 	export let guessRank;
 	export let replay: Replay;
+
+	async function handleClick(e: KeyboardEvent | MouseEvent) {
+		if (e && e.target) {
+			guess = true;
+			guessRank = (e.target as HTMLImageElement).alt;
+			const a = newGuesses(guessRank, replay.guesses as [{ rank: string; guesses: number }]);
+			const b = await patchGuesses(replay.id, a);
+		}
+	}
 </script>
 
 <div class="flex justify-evenly py-5">
@@ -19,15 +27,8 @@
 					title={rank.import}
 					width={50}
 					height={50}
-					on:click={async (e) => {
-						if (e && e.target) {
-							guess = true;
-							guessRank = e.target.alt;
-							const a = newGuesses(guessRank, replay.guesses);
-							const b = await patchGuesses(replay.id, a);
-							console.log(b);
-						}
-					}}
+					on:keydown={async (e) => await handleClick(e)}
+					on:click={async (e) => await handleClick(e)}
 				/>
 			{/each}
 		{/if}
