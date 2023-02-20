@@ -1,6 +1,7 @@
 <script lang="ts">
   import { Bar } from 'svelte-chartjs'; //https://www.npmjs.com/package/svelte-chartjs
-  export let replay: any;
+  import type {Replay} from '../db_res'
+  export let replay: Replay;
   import {
     Chart,
     Title,

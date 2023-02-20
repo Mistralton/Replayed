@@ -2,9 +2,10 @@
 	import { onMount } from 'svelte';
 	import ranks from './ranks.json';
 	import { newGuesses, patchGuesses } from '../../routes/replay/[slug]/UpdatedGuesses';
+	import type {Replay} from '../db_res'
 	export let guess;
 	export let guessRank;
-	export let replay: any;
+	export let replay: Replay;
 </script>
 
 <div class="flex justify-evenly py-5">

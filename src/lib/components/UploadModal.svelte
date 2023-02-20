@@ -30,9 +30,9 @@
 		}
 	};
 
-	const previously_focused: any = typeof document !== 'undefined' && document.activeElement;
+	const previously_focused = typeof document !== 'undefined' && document.activeElement;
 
-	if (previously_focused) {
+	if (previously_focused  && previously_focused instanceof HTMLElement) {
 		onDestroy(() => {
 			previously_focused.focus();
 		});

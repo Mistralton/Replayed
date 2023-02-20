@@ -1,26 +1,30 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	import { game } from '../../../stores/stores';
 	import { onMount } from 'svelte';
 	import { supabase } from '../../../lib/supabase';
 	import GuessStat from '../../../lib/components/GuessStat.svelte';
 	import RankGrid from '../../../lib/components/RankGrid.svelte';
 	import Comment from '$lib/components/Comment.svelte';
-
+	import type {Replay} from '../../../lib/db_res'
 	export let data: PageData;
 
 	let guess = false;
 	let guessRank = '';
 
-	let replaylist: any;
-	let replay: any;
+	let replaylist: Replay[];
+	let replay: Replay;
 
 	onMount(async () => {
 		console.log(data.title)
 		let { data: replays, error } = await supabase.from('replays').select().eq('game', data.title);
-		replaylist = replays;
-		const randindex = Math.floor(Math.random() * replaylist.length);
-		replay = replaylist[randindex];
+		if (replays) {
+			replaylist = replays;
+			const randindex = Math.floor(Math.random() * replaylist.length);
+			replay = replaylist[randindex];
+		}
+		
+		console.log(replaylist)
+		console.log(replay)
 	});
 
 </script>
