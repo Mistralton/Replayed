@@ -55,7 +55,7 @@
 	{/if}
 	{#if data.title === 'valorant' && guess === false}valorant{/if}
 	{#if data.title === 'overwatch' && guess === false}overwatch 2{/if}
-	{#if data.title === 'LEAGUE' && guess === false && replay}
+	{#if data.title === 'LEAGUE OF LEGENDS' && guess === false && replay}
 		<RankGrid bind:guess bind:guessRank replay={replay}/>
 	{/if}
 </div>
