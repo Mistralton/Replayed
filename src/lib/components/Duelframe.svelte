@@ -7,6 +7,7 @@
 	export let safeGraph = false;
 	export let updateGuess: (newGuess: string) => void;
 	export let higher: number;
+	export let image: any;
 	let clicked = false;
 </script>
 
@@ -41,6 +42,7 @@
 			<p class="text-white mt-4">
 				I was {higher === replay.id ? 'higher' : 'lower'}
 			</p>
+			<img src={image} width="100" />
 			<p class="text-white mt-4">{clicked ? 'You guessed me!' : 'You did not guess me!'}</p>
 		{/if}
 		{#if safeGraph && guess.length > 0}

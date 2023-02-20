@@ -1,3 +1,7 @@
+<svelte:head>
+	<title>Replayed.gg - About</title>
+</svelte:head>
+
 <div class="items-center flex flex-col flex-1 mt-16 bg-gradient-to-b from-stone-900 to-stone-600">
 	<div class="flex flex-col text-center">
 		<h1 class="tracking-tighter text-6xl text-white font-semibold">About Us</h1>
