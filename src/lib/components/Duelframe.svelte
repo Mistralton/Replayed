@@ -5,6 +5,8 @@
 	export let replay: Replay;
 	export let guess = '';
 	export let safeGraph = false;
+	export let updateGuess: (newGuess: string) => void
+	export let higher: number;
 </script>
 
 <div class="flex flex-col items-center">
@@ -25,12 +27,18 @@
 		{#if guess.length === 0}
 			<button
 				disabled={guess.length > 0}
-				on:click={() => (guess = `${replay.user}'s play`)}
+				on:click={async () => {
+					guess = `${replay.user}'s play`
+					updateGuess(guess);
+				} }
 				class="mt-4 bg-stone-600 disabled:bg-opacity-25 rounded-lg p-2 drop-shadow border-stone-50 tracking-tighter"
 				>Higher</button
 			>
 		{/if}
 		{#if safeGraph && guess.length > 0}
+			<p>
+				I was {higher === replay.id ? "higher" : "lower"}
+			</p>
 			<DuelGraph {replay} />
 			<Comment comments={replay.comments} id={replay.id} />
 		{/if}
