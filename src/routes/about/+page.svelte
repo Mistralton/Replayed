@@ -27,10 +27,10 @@
     </div>
 
     <div class="flex gap-8 mt-24">
-      <img src="Kyle.png" width="500">
+      <img src="tft.jpg" width="500">
       <div>
         <h2 class="text-xl font-bold">Kyle Leung</h2>
-        <p>Hi my name is Kyle. 
+        <p> I don't play games anymore besides tft.
         </p>
       </div>
     </div>
