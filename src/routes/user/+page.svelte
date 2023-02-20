@@ -23,7 +23,7 @@
 		<h1 class="tracking-tight leading-6 text-[4rem] mb-8">
 			Hello <span class="text-blue-900">{user.name}</span>
 		</h1>
-		<img src={user.avatar} />
+		<img alt={"user avatar"} src={user.avatar} />
 		{#if userReplays && userReplays[0]}
 			{#each userReplays as userReplay}
 				<iframe

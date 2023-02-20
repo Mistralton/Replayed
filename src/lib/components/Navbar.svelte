@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { supabase } from '$lib/supabase';
 	import { z } from 'zod';
-	import { generateErrorMessage, ErrorMessageOptions } from 'zod-error';
 	import { modal, signedStatus } from '../../stores/stores';
 	import UploadModal from './UploadModal.svelte';
 	import { replayInfo, replayInsert } from './UploadReplay';
