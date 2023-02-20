@@ -1,7 +1,7 @@
-import { json } from '@sveltejs/kit';
+import { json, type RequestEvent } from '@sveltejs/kit';
 import { supabase } from '../rlsSupabase';
 
-export async function POST({ request }: any) {
+export async function POST({ request }: RequestEvent) {
     console.log("I am ")
     const {game, rank, user, link, defaults } = await request.json();
     const { data, error } = await supabase

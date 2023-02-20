@@ -1,12 +1,40 @@
 <script lang="ts">
 	import { supabase } from '$lib/supabase';
+	import { z } from 'zod';
 	import { modal, signedStatus } from '../../stores/stores';
   import UploadModal from './UploadModal.svelte'
   import { replayInfo, replayInsert } from "./UploadReplay";
 	let login: HTMLDivElement;
+  let games = z.enum(["valorant", "league of legends", "overwatch"])
+  const valorantRanks = z.enum(["iron", "bronze", "silver", "gold", "platinum", "diamond", "immortal", "radiant"]);
+  const lolRanks = z.enum(["iron", "bronze", "silver", "gold", "platinum", "diamond", "master", "grandmaster", "challenger"]);
+  const owRanks = z.enum(["bronze", "silver", "gold", "platinum", "diamond", "master", "grandmaster", "top 500", "top500"]);
+  const youtubeRegex = /^https?:\/\/(?:www\.)?youtube(?:-nocookie)?\.com\/(?:[^/]+\/.+\/|(?:v|embed)\/|watch\?v=)([^/?&]{11})/;
+  const youtubeLink = z.string().refine((val) => {
+    return youtubeRegex.test(val);
+  }, { message: 'Invalid YouTube link' });
   let game = "";
   let rank = "";
   let link = "";
+
+  function getRankSchema(game: string) {
+    switch (game.toLowerCase()) {
+      case "valorant":
+        return valorantRanks;
+      case "league of legends":
+        return lolRanks;
+      case "overwatch":
+        return owRanks;
+      default:
+        throw new Error("Unsupported game");
+    }
+  }
+
+  function validateRank(game: string, rank: string) {
+    if (game === "top 500") game = "top500"
+    const rankSchema = getRankSchema(game);
+    rankSchema.parse(rank);
+  }
 </script>
 
 <nav class="flex-initial w-full flex justify-between bg-stone-600 h-10">
@@ -21,6 +49,9 @@
         Upload Your Clip
       </h2>
       <form class="h-36 flex flex-col" on:submit={async (e) => {
+        games.parse(game.toLowerCase());
+        validateRank(game, rank.toLowerCase());
+        youtubeLink.parse(link)
         let newObj = await replayInfo(game, rank, link);
         const a = await replayInsert(newObj)
 
