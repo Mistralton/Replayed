@@ -48,7 +48,7 @@
 			placeholder="Give your thoughts on this play"
 			bind:value={textareaValue}
 		/>
-		<button class="rounded-md bg-stone-600 p-1 mt-2" type="submit">Submit</button>
+		<button class="rounded-md bg-stone-600 p-1 mt-2 hover:text-white" type="submit">Submit</button>
 	</form>
 	{#if comments}
 		{#each comments as comment}

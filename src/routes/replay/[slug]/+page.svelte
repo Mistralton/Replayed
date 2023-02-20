@@ -61,6 +61,6 @@
 
 		<button on:click={() => {
 			location.reload()
-		}} class="p-2 bg-stone-600 rounded-lg mb-10">Play Again</button>
+		}} class="p-2 bg-stone-600 rounded-lg mb-10 hover:text-white">Play Again</button>
 	{/if}
 </div>
