@@ -31,7 +31,6 @@
 		</div>
 		<video width="500" autoplay controls muted loop src="test1.mp4" />
 	</div>
-	<Choose />
 	<p class="text-white max-w-3xl text-center">
 		From MOBAs like League of Legends, to FPS games like Valorant, our website currently supports
 		several different games with more coming soon!
@@ -46,4 +45,5 @@
 		title={'Made For People Who Solo Bolo or Duo Queue'}
 		text={'Judge one clip at a time in our single player mode or test your skills and compare the ranks of two simultaneously in our duels mode!'}
 	/>
+	<Choose />
 </div>

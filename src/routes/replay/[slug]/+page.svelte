@@ -5,7 +5,7 @@
 	import GuessStat from '../../../lib/components/GuessStat.svelte';
 	import RankGrid from '../../../lib/components/RankGrid.svelte';
 	import Comment from '$lib/components/Comment.svelte';
-	import type {Replay} from '../../../lib/db_res'
+	import type { Replay } from '../../../lib/db_res';
 	export let data: PageData;
 
 	let guess = false;
@@ -15,18 +15,17 @@
 	let replay: Replay;
 
 	onMount(async () => {
-		console.log(data.title)
+		console.log(data.title);
 		let { data: replays, error } = await supabase.from('replays').select().eq('game', data.title);
 		if (replays) {
 			replaylist = replays;
 			const randindex = Math.floor(Math.random() * replaylist.length);
 			replay = replaylist[randindex];
 		}
-		
-		console.log(replaylist)
-		console.log(replay)
-	});
 
+		console.log(replaylist);
+		console.log(replay);
+	});
 </script>
 
 <div class="flex flex-col items-center flex-1">
@@ -43,8 +42,8 @@
 			class="mx-auto"
 		/>
 	{/if}
-	<RankGrid bind:guess bind:guessRank replay={replay}/>
-	{#if guess === true }
+	<RankGrid bind:guess bind:guessRank {replay} />
+	{#if guess === true}
 		<div class="flex justify-evenly p-5 gap-16">
 			<div>
 				<h2 class="text-white">Your Guess</h2>
@@ -56,7 +55,7 @@
 			</div>
 		</div>
 
-		<GuessStat replay={replay}/>
+		<GuessStat {replay} />
 
 		<Comment position="single" comments={replay.comments} id={replay.id} />
 

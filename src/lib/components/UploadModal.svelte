@@ -9,7 +9,7 @@
 
 	const handle_keydown = (e: KeyboardEvent) => {
 		if (e && e.key === 'Escape') {
-			modal.set(false)
+			modal.set(false);
 			close();
 			return;
 		}
@@ -32,7 +32,7 @@
 
 	const previously_focused = typeof document !== 'undefined' && document.activeElement;
 
-	if (previously_focused  && previously_focused instanceof HTMLElement) {
+	if (previously_focused && previously_focused instanceof HTMLElement) {
 		onDestroy(() => {
 			previously_focused.focus();
 		});

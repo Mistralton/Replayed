@@ -7,9 +7,9 @@
 
 	const rankNames = ranks.filter((rank) => rank.game === replay.game).map((rank) => rank.alt);
 
-	const guesses: { rank: string; guesses: number; }[] = replay.guesses;
+	const guesses: { rank: string; guesses: number }[] = replay.guesses;
 
-	guesses.sort((a: { rank: string; guesses: number; }, b: { rank: string; guesses: number; }) => {
+	guesses.sort((a: { rank: string; guesses: number }, b: { rank: string; guesses: number }) => {
 		const indexA = rankNames.indexOf(a.rank);
 		const indexB = rankNames.indexOf(b.rank);
 		return indexA - indexB;
