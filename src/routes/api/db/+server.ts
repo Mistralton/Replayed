@@ -1,4 +1,4 @@
-import { json } from '@sveltejs/kit';
+import { json, type RequestEvent } from '@sveltejs/kit';
 import { supabase } from '../rlsSupabase';
 
     // {
@@ -7,7 +7,7 @@ import { supabase } from '../rlsSupabase';
     //                  guesses: 2}]
     // }
 
-export async function PATCH({ request }: any) {
+export async function PATCH({ request }: RequestEvent) {
     const newValues: {id: number, changes: [{rank: string, guesses: number}]} = await request.json();
     
     const { data, error } = await supabase
